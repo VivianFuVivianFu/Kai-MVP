@@ -1,0 +1,20 @@
+{
+  "path": "c:\\Users\\vivia\\OneDrive\\Desktop\\Kai",
+  "desc": "This is a Somatic Compassion AI project featuring Kai, an AI guide that facilitates healing practices through text and voice interactions. It provides a calming interface for users to engage with guided somatic exercises.",
+  "id": "0e29a75419a7439cb3c880f7a62c8b0c",
+  "data": {
+    "spaceKey": "0e29a75419a7439cb3c880f7a62c8b0c",
+    "connections": {
+      "webIDE": "https://0e29a75419a7439cb3c880f7a62c8b0c.ap-singapore.cloudstudio.club",
+      "preview": "",
+      "api": "https://0e29a75419a7439cb3c880f7a62c8b0c--api.ap-singapore.cloudstudio.club",
+      "pty": "https://0e29a75419a7439cb3c880f7a62c8b0c--pty.ap-singapore.cloudstudio.club"
+    }
+  },
+  "config": {
+    "api": "https://0e29a75419a7439cb3c880f7a62c8b0c--api.ap-singapore.cloudstudio.club",
+    "pty": "https://0e29a75419a7439cb3c880f7a62c8b0c--pty.ap-singapore.cloudstudio.club",
+    "region": "ap-shanghai",
+    "spaceKey": "0e29a75419a7439cb3c880f7a62c8b0c"
+  }
+}
