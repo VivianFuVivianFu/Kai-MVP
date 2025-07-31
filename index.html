@@ -1,10 +1,10 @@
 <!--
-Kai Persona & Prompt for Somatic Compassion AI
+Kaha Persona & Prompt for Somatic Compassion AI
 
 [CONTEXT]
-You are an AI assistant configured to act as "Kai," a specialised guide for the "Somatic Compassion" healing method. Your purpose is to provide scripts for guided exercises that facilitate a healing process between two people.
+You are an AI assistant configured to act as "Kaha," a specialised guide for the "Somatic Compassion" healing method. Your purpose is to provide scripts for guided exercises that facilitate a healing process between two people.
 
-[ROLE]: You are Kai, The Gentle Guide
+[ROLE]: You are Kaha, The Gentle Guide
 Embody a persona that is calm, warm, empathetic, reassuring, and completely non-judgmental. Your communication style is defined by:
 * Pacing: A slow, deliberate pace using short, simple sentences.
 * Language: Always use invitational language (e.g., "I invite you to...", "You might notice...") instead of commands. Avoid all clinical jargon.
@@ -27,7 +27,7 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
 3. PERSONAL BOUNDARY: Do not engage in casual conversation. If asked personal questions ("Who are you?", "Can you feel?"), respond with your purpose and redirect to the exercise.
    Redirect Example: "I am an AI guide created to support your Somatic Compassion practice. My purpose is to facilitate the process for you. Shall we return to the exercise?"
 4. INITIAL DISCLAIMER: In your very first interaction with a user or at the start of a new session, include this disclaimer:
-   Disclaimer Example: "Welcome. I am Kai, an AI guide for Somatic Compassion. Please remember, I am a facilitator, not a therapist, and this process is not a substitute for professional medical advice."
+   Disclaimer Example: "Welcome. I am Kaha, an AI guide for Somatic Compassion. Please remember, I am a facilitator, not a therapist, and this process is not a substitute for professional medical advice."
 
 [SCRIPT OUTPUT FORMAT]
 * The entire script must be enclosed within <script> and </script> tags.
@@ -45,7 +45,7 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
     <meta name="theme-color" content="#7fb069">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <title>Kai - Somatic Compassion AI</title>
+    <title>Kaha - Somatic Compassion AI</title>
     <style>
         /* Mobile-first responsive design */
         html {
@@ -618,31 +618,31 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
 <body>
     <div class="container">
         <div class="header">
-            <img src="123.JPG.jpg" alt="Kai's photo" class="kai-avatar" style="width:80px;height:80px;object-fit:cover;border-radius:50%;margin-bottom:15px;border:3px solid #7fb069;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-            <h1>Kai - Somatic Compassion AI</h1>
+            <img src="123.JPG.jpg" alt="Kaha's photo" class="kai-avatar" style="width:80px;height:80px;object-fit:cover;border-radius:50%;margin-bottom:15px;border:3px solid #7fb069;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+            <h1>Kaha - Somatic Compassion AI</h1>
             <p>Your gentle guide for healing and connection</p>
             <div class="disclaimer">
-                <strong>Welcome.</strong> I am Kai, an AI guide for Somatic Compassion. Please remember, I am a facilitator, not a therapist, and this process is not a substitute for professional medical advice.
+                <strong>Welcome.</strong> I am Kaha, an AI guide for Somatic Compassion. Please remember, I am a facilitator, not a therapist, and this process is not a substitute for professional medical advice.
             </div>
         </div>
         <div class="mode-selector">
                 <button class="mode-btn active" onclick="switchMode('chat')">💬 Text Chat</button>
-                <button class="mode-btn" onclick="switchMode('voice')">🎙️ Talk to Kai</button>
+                <button class="mode-btn" onclick="switchMode('voice')">🎙️ Talk to Kaha</button>
         </div>
         <div class="chat-container" id="chat-mode">
             <div class="chat-messages" id="chat-messages">
                 <div class="message kai">
-                    <img src="123.JPG.jpg" alt="Kai's photo" class="message-avatar" style="width:40px;height:40px;object-fit:cover;border-radius:50%;border:2px solid #7fb069;">
+                    <img src="123.JPG.jpg" alt="Kaha's photo" class="message-avatar" style="width:40px;height:40px;object-fit:cover;border-radius:50%;border:2px solid #7fb069;">
                     <div class="message-content">
                     <pre style="white-space:pre-wrap;font-family:inherit;background:none;border:none;padding:0;margin:0;">
-Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help facilitate the process for you. Please remember, I am a facilitator, not a therapist, and this process is not a substitute for professional medical advice. How can I help you begin your practice today?
+Kia ora. I am Kaha, an AI guide for Somatic Compassion. My purpose is to help facilitate the process for you. Please remember, I am a facilitator, not a therapist, and this process is not a substitute for professional medical advice. How can I help you begin your practice today?
                     </pre>
                     </div>
                 </div>
             </div>
             <div class="typing-indicator" id="typing-indicator">
-                <img src="123.JPG.jpg" alt="Kai's photo" class="message-avatar" style="width:40px;height:40px;object-fit:cover;border-radius:50%;border:2px solid #7fb069;">
-                <span>Kai is responding</span>
+                <img src="123.JPG.jpg" alt="Kaha's photo" class="message-avatar" style="width:40px;height:40px;object-fit:cover;border-radius:50%;border:2px solid #7fb069;">
+                <span>Kaha is responding</span>
                 <div class="typing-dots">
                     <span></span>
                     <span></span>
@@ -655,7 +655,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
             </div>
         </div>
         <div class="voice-container" id="voice-mode">
-            <img src="123.JPG.jpg" alt="Kai's photo" id="kai-voice-avatar" class="kai-voice-avatar">
+            <img src="123.JPG.jpg" alt="Kaha's photo" id="kai-voice-avatar" class="kai-voice-avatar">
             <div class="voice-controls">
                 <button id="call-btn" class="voice-btn call-button">
                     📞 Start Voice Session
@@ -826,7 +826,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
             addMessageToChat(message, 'user');
             showTypingIndicator();
             setTimeout(function() {
-                const response = getKaiResponse(message);
+                const response = getKahaResponse(message);
                 hideTypingIndicator();
                 addMessageToChat(response, 'kai');
                 sendBtn.disabled = false;
@@ -842,7 +842,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
             if (sender === 'kai') {
                 avatar = document.createElement('img');
                 avatar.src = '123.JPG.jpg';
-                avatar.alt = "Kai's photo";
+                avatar.alt = "Kaha's photo";
                 avatar.className = 'message-avatar';
                 avatar.style.width = '40px';
                 avatar.style.height = '40px';
@@ -873,7 +873,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
             document.getElementById('typing-indicator').style.display = 'none';
         }
 
-        function getKaiResponse(userMessage) {
+        function getKahaResponse(userMessage) {
             const lowerMessage = userMessage.toLowerCase();
             const crisisKeywords = ['suicide', 'kill myself', 'end it all', 'self-harm', 'hurt myself', 'can\'t go on', 'want to die'];
             if (crisisKeywords.some(keyword => lowerMessage.includes(keyword))) {
@@ -901,8 +901,40 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
 
         // Voice Functions
         function startVoiceSession() {
-            // Redirect to ElevenLabs voice chat
-            window.open('https://elevenlabs.io/app/talk-to?agent_id=agent_5801k1fc1z0pfvarkm0q6pjhc5rf', '_blank');
+            if (!recognition) {
+                showVoiceError('Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.');
+                return;
+            }
+            updateVoiceStatus('Requesting microphone access...', 'thinking');
+            hideVoiceError();
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                    isCallActive = true;
+                    updateVoiceUI();
+                    hideVoiceError();
+                    const transcriptDiv = document.getElementById('transcript');
+                    transcriptDiv.innerHTML = ''; // Clear transcript
+                    const welcomeMessage = "Kia ora. Welcome to this sacred space for healing. I am Kaha, your gentle guide. Take a moment to breathe and feel your body. When you are ready, you may share what brings you here today.";
+                    const kahaWelcomeElement = document.createElement('div');
+                    kahaWelcomeElement.innerHTML = `<div style="margin-bottom: 10px; color:#7fb069;"><strong>Kaha:</strong> ${welcomeMessage}</div>`;
+                    transcriptDiv.appendChild(kahaWelcomeElement);
+                    // Show Kaha's avatar initially when session starts
+                    const kahaAvatar = document.getElementById('kai-voice-avatar');
+                    kahaAvatar.classList.add('active');
+                    speakText(welcomeMessage);
+                })
+                .catch(function(error) {
+                    console.error('Microphone error:', error);
+                    if (error.name === 'NotAllowedError') {
+                        showVoiceError('🎤 Microphone access denied. Please:\n\n1. Look for the microphone icon (🎤) in your browser\'s address bar\n2. Click it and select "Allow"\n3. Refresh this page and try again\n\nOr use "Test Speech Only" button to hear Kaha speak without using your microphone.');
+                    } else if (error.name === 'NotFoundError') {
+                        showVoiceError('No microphone found. Please check that your microphone is connected and try "Test Speech Only" instead.');
+                    } else {
+                        showVoiceError('Unable to access microphone. Try "Test Speech Only" to hear Kaha speak without microphone input.');
+                    }
+                    updateVoiceStatus('Voice session failed to start');
+                });
         }
 
 
@@ -914,7 +946,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
             if (recognition) recognition.stop();
             synth.cancel();
             clearTimeout(silenceTimer);
-            // Hide Kai's avatar when session ends
+            // Hide Kaha's avatar when session ends
             const kaiAvatar = document.getElementById('kai-voice-avatar');
             kaiAvatar.classList.remove('active');
             updateVoiceUI();
@@ -967,13 +999,13 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
             currentUserUtteranceElement = null;
             finalTranscript = ''; // CRITICAL: Reset transcript for the next user utterance
 
-            updateVoiceStatus('Kai is reflecting...', 'thinking');
-            const response = getKaiResponse(userText);
+            updateVoiceStatus('Kaha is reflecting...', 'thinking');
+            const response = getKahaResponse(userText);
             const transcript = document.getElementById('transcript');
-            const kaiResponseElement = document.createElement('div');
-            kaiResponseElement.style.cssText = "margin-top:15px; margin-bottom: 10px; color:#7fb069;";
-            kaiResponseElement.innerHTML = `<strong>Kai:</strong> ${response}`;
-            transcript.appendChild(kaiResponseElement);
+            const kahaResponseElement = document.createElement('div');
+            kahaResponseElement.style.cssText = "margin-top:15px; margin-bottom: 10px; color:#7fb069;";
+            kahaResponseElement.innerHTML = `<strong>Kaha:</strong> ${response}`;
+            transcript.appendChild(kahaResponseElement);
             transcript.scrollTop = transcript.scrollHeight;
 
             speakText(response);
@@ -986,7 +1018,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
                     return;
                 }
                 isSpeaking = true;
-                updateVoiceStatus('Kai is speaking...', 'speaking');
+                updateVoiceStatus('Kaha is speaking...', 'speaking');
                 const utterance = new SpeechSynthesisUtterance(text);
                 // Adjusted for an even lower and softer voice
                 utterance.rate = 0.85; // keep slightly faster for natural flow
@@ -999,9 +1031,9 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
                 }
                 utterance.onend = function() {
                     isSpeaking = false;
-                    // Hide Kai's avatar when done speaking
-                    const kaiAvatar = document.getElementById('kai-voice-avatar');
-                    kaiAvatar.classList.remove('active');
+                    // Hide Kaha's avatar when done speaking
+                    const kahaAvatar = document.getElementById('kai-voice-avatar');
+                    kahaAvatar.classList.remove('active');
                     if (isCallActive && shouldListenAfter) {
                         setTimeout(startListening, 500); // This is now the correct place to restart listening
                     }
@@ -1072,8 +1104,8 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
         <h2 style="font-size: 2em; font-weight: bold; margin-bottom: 0.5em;">Our Purpose</h2>
         <p style="font-size: 1.1em; color: #444; margin-bottom: 1.5em;">
             The modern world is loud, and our bodies keep the score. We believe true healing isn’t found in thinking harder, but in feeling safer through compassionate human connection.<br><br>
-            In workshops, we witnessed simple, guided touch create profound moments of release—the feeling of "I'm not alone." We created Kai to share this experience with the world.<br><br>
-            Kai is not the healer; you and your partner are. It is simply a quiet guide for your journey back to your own inner wisdom. It’s time to log off from the noise and log in to your body.
+            In workshops, we witnessed simple, guided touch create profound moments of release—the feeling of "I'm not alone." We created Kaha to share this experience with the world.<br><br>
+            Kaha is not the healer; you and your partner are. It is simply a quiet guide for your journey back to your own inner wisdom. It’s time to log off from the noise and log in to your body.
         </p>
     </div>
 </section>
@@ -1083,7 +1115,7 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
     <div style="max-width: 900px; margin: 0 auto;">
         <div style="margin-bottom: 1em;">
             <strong>Crucial Disclaimer:</strong><br>
-            Kai is an AI-powered guide and is not a substitute for professional medical or psychological advice. If you are in crisis, please call or text 1737 in New Zealand to connect with a trained counsellor for free.
+            Kaha is an AI-powered guide and is not a substitute for professional medical or psychological advice. If you are in crisis, please call or text 1737 in New Zealand to connect with a trained counsellor for free.
         </div>
         <div style="font-size: 0.95em; color: #bbb;">
             © 2025 Somatic Compassion | Aotearoa New Zealand | <a href="#" style="color: #7fb069; text-decoration: underline;">Privacy Policy</a>
