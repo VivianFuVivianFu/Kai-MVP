@@ -41,13 +41,37 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#7fb069">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Kai - Somatic Compassion AI</title>
     <style>
+        /* Mobile-first responsive design */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Improve touch targets */
+        button, input, select, textarea {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            min-height: 44px; /* iOS recommended touch target size */
+        }
+        
+        /* Prevent zoom on input focus for iOS */
+        input[type="text"], input[type="email"], input[type="tel"], 
+        input[type="password"], textarea, select {
+            font-size: 16px !important;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -126,6 +150,17 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
         }
         .mode-btn:hover {
             background: rgba(127, 176, 105, 0.1);
+        }
+        
+        /* Touch device improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .mode-btn:hover {
+                background: transparent;
+            }
+            .mode-btn:active {
+                background: rgba(127, 176, 105, 0.2);
+                transform: scale(0.98);
+            }
         }
         .mode-btn.active {
             background: #7fb069;
@@ -244,6 +279,17 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
         .send-btn:hover {
             background: #6a9559;
         }
+        
+        /* Touch device improvements for send button */
+        @media (hover: none) and (pointer: coarse) {
+            .send-btn:hover {
+                background: #7fb069;
+            }
+            .send-btn:active {
+                background: #6a9559;
+                transform: scale(0.98);
+            }
+        }
         .send-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -298,6 +344,18 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
             transform: translateY(-2px);
             box-shadow: 0 15px 30px rgba(127, 176, 105, 0.4);
         }
+        
+        /* Touch device improvements for voice buttons */
+        @media (hover: none) and (pointer: coarse) {
+            .call-button:hover {
+                transform: none;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            .call-button:active {
+                transform: scale(0.95);
+                box-shadow: 0 8px 16px rgba(127, 176, 105, 0.3);
+            }
+        }
         .hang-up-button {
             background: linear-gradient(45deg, #f56565, #e53e3e);
             color: white;
@@ -306,6 +364,18 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
         .hang-up-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 30px rgba(245, 101, 101, 0.4);
+        }
+        
+        /* Touch device improvements for hang-up button */
+        @media (hover: none) and (pointer: coarse) {
+            .hang-up-button:hover {
+                transform: none;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            .hang-up-button:active {
+                transform: scale(0.95);
+                box-shadow: 0 8px 16px rgba(245, 101, 101, 0.3);
+            }
         }
         .status {
             margin: 25px 0;
@@ -359,19 +429,188 @@ Your primary task is to generate scripts for guided Somatic Compassion exercises
             border-left: 4px solid #e53e3e;
         }
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
             .container {
-                padding: 20px;
-                margin: 10px;
+                padding: 15px;
+                margin: 5px;
+                border-radius: 15px;
+                min-height: auto;
+            }
+            .header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
             }
             .header h1 {
-                font-size: 1.8em;
+                font-size: 1.6em;
+                margin-bottom: 8px;
+            }
+            .header p {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+            .kai-avatar {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 10px;
+            }
+            .disclaimer {
+                padding: 12px;
+                font-size: 0.85em;
+                margin-bottom: 15px;
+            }
+            .mode-selector {
+                gap: 8px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+            .mode-btn {
+                padding: 10px 18px;
+                font-size: 14px;
+                flex: 1;
+                min-width: 120px;
+            }
+            .chat-container {
+                height: 400px;
+            }
+            .chat-messages {
+                padding: 15px;
+                margin-bottom: 10px;
+            }
+            .message {
+                margin-bottom: 12px;
+            }
+            .message-avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 12px;
+            }
+            .message-content {
+                max-width: 80%;
+                padding: 10px 14px;
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            .chat-input-container {
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            .chat-input {
+                padding: 10px 14px;
+                font-size: 16px;
+                border-radius: 20px;
+                flex: 1;
+                min-width: 200px;
+            }
+            .send-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                border-radius: 20px;
+                min-width: 80px;
+            }
+            .voice-container {
+                padding: 15px;
+            }
+            .kai-voice-avatar {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            .voice-controls {
+                margin: 20px 0;
+            }
+            .voice-btn {
+                padding: 12px 24px;
+                font-size: 1em;
+                margin: 8px;
+                border-radius: 40px;
+                display: block;
+                width: 90%;
+                max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .status {
+                margin: 20px 0;
+                padding: 12px;
+                font-size: 1em;
+                border-radius: 12px;
+            }
+            .transcript {
+                margin: 20px 0;
+                padding: 15px;
+                font-size: 14px;
+                line-height: 1.5;
+                min-height: 120px;
+                max-height: 250px;
+                border-radius: 12px;
+            }
+            .error-message {
+                padding: 12px;
+                margin: 15px 0;
+                font-size: 14px;
+                border-radius: 8px;
+            }
+            .typing-indicator {
+                margin-bottom: 10px;
+            }
+            .typing-indicator .message-avatar {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 12px;
+                margin: 0;
+                border-radius: 10px;
+            }
+            .header h1 {
+                font-size: 1.4em;
+            }
+            .header p {
+                font-size: 0.9em;
+            }
+            .mode-btn {
+                padding: 8px 14px;
+                font-size: 13px;
+                min-width: 100px;
+            }
+            .chat-container {
+                height: 350px;
             }
             .message-content {
                 max-width: 85%;
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            .chat-input {
+                padding: 8px 12px;
+                font-size: 16px; /* Keep 16px to prevent zoom on iOS */
+            }
+            .send-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+                min-width: 70px;
             }
             .voice-btn {
-                padding: 15px 30px;
-                font-size: 1em;
+                padding: 10px 20px;
+                font-size: 0.9em;
+                width: 95%;
+            }
+            .kai-voice-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .transcript {
+                font-size: 13px;
+                min-height: 100px;
+                max-height: 200px;
             }
         }
     </style>
@@ -662,40 +901,8 @@ Kia ora. I am Kai, an AI guide for Somatic Compassion. My purpose is to help fac
 
         // Voice Functions
         function startVoiceSession() {
-            if (!recognition) {
-                showVoiceError('Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.');
-                return;
-            }
-            updateVoiceStatus('Requesting microphone access...', 'thinking');
-            hideVoiceError();
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(function(stream) {
-                    stream.getTracks().forEach(track => track.stop());
-                    isCallActive = true;
-                    updateVoiceUI();
-                    hideVoiceError();
-                    const transcriptDiv = document.getElementById('transcript');
-                    transcriptDiv.innerHTML = ''; // Clear transcript
-                    const welcomeMessage = "Kia ora. Welcome to this sacred space for healing. I am Kai, your gentle guide. Take a moment to breathe and feel your body. When you are ready, you may share what brings you here today.";
-                    const kaiWelcomeElement = document.createElement('div');
-                    kaiWelcomeElement.innerHTML = `<div style="margin-bottom: 10px; color:#7fb069;"><strong>Kai:</strong> ${welcomeMessage}</div>`;
-                    transcriptDiv.appendChild(kaiWelcomeElement);
-                    // Show Kai's avatar initially when session starts
-                    const kaiAvatar = document.getElementById('kai-voice-avatar');
-                    kaiAvatar.classList.add('active');
-                    speakText(welcomeMessage);
-                })
-                .catch(function(error) {
-                    console.error('Microphone error:', error);
-                    if (error.name === 'NotAllowedError') {
-                        showVoiceError('🎤 Microphone access denied. Please:\n\n1. Look for the microphone icon (🎤) in your browser\'s address bar\n2. Click it and select "Allow"\n3. Refresh this page and try again\n\nOr use "Test Speech Only" button to hear Kai speak without using your microphone.');
-                    } else if (error.name === 'NotFoundError') {
-                        showVoiceError('No microphone found. Please check that your microphone is connected and try "Test Speech Only" instead.');
-                    } else {
-                        showVoiceError('Unable to access microphone. Try "Test Speech Only" to hear Kai speak without microphone input.');
-                    }
-                    updateVoiceStatus('Voice session failed to start');
-                });
+            // Redirect to ElevenLabs voice chat
+            window.open('https://elevenlabs.io/app/talk-to?agent_id=agent_5801k1fc1z0pfvarkm0q6pjhc5rf', '_blank');
         }
 
 
