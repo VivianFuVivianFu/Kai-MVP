@@ -664,16 +664,16 @@ Kia ora. I am Kaha, an AI guide for Somatic Compassion. My purpose is to help fa
                     🔴 End Session
                 </button>
                 <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
-                    <strong>Advanced Voice Conversation:</strong><br>
-                    Opens Kaha's voice interface in a new window<br>
-                    Continue using this site while talking with Kaha<br>
+                    <strong>Integrated Voice Conversation:</strong><br>
+                    Talk naturally with Kaha using your device's microphone<br>
+                    Complete voice experience right here on this website<br>
                 </div>
             </div>
             <div id="status" class="status">
                 Ready to begin your advanced voice session with Kaha
             </div>
             <div id="transcript" class="transcript">
-                <em>Click "Start Voice Session" to open Kaha's advanced voice interface...</em>
+                <em>Click "Start Voice Session" to begin talking with Kaha directly on this website...</em>
             </div>
             <div id="error-message" class="error-message"></div>
         </div>
@@ -908,56 +908,58 @@ Kia ora. I am Kaha, an AI guide for Somatic Compassion. My purpose is to help fa
             const kahaAvatar = document.getElementById('kai-voice-avatar');
             kahaAvatar.classList.add('active');
             
-            updateVoiceStatus('Opening voice conversation with Kaha...', 'thinking');
+            updateVoiceStatus('Initializing voice session...', 'thinking');
             
-            // Open ElevenLabs in a new window/tab
-            const voiceWindow = window.open(
-                'https://elevenlabs.io/app/talk-to?agent_id=agent_5801k1fc1z0pfvarkm0q6pjhc5rf',
-                'kaha-voice',
-                'width=800,height=600,scrollbars=yes,resizable=yes'
-            );
-            
-            // Update the transcript area with instructions
-            const transcript = document.getElementById('transcript');
-            transcript.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 1.1em; color: #7fb069; margin-bottom: 15px;">
-                        <strong>🎙️ Voice Session Active</strong>
-                    </div>
-                    <p style="color: #666; margin-bottom: 15px;">
-                        Your voice conversation with Kaha has opened in a new window.
-                    </p>
-                    <p style="color: #666; margin-bottom: 20px;">
-                        You can continue using this website while talking with Kaha.
-                        Switch between the windows as needed.
-                    </p>
-                    <div style="background: rgba(127, 176, 105, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                        <p style="color: #4a5a3a; font-size: 0.9em;">
-                            <strong>💡 Tip:</strong> If the voice window didn't open, please check your browser's popup blocker settings and try again.
-                        </p>
-                    </div>
-                </div>
-            `;
-            
-            // Check if window was blocked
-            if (!voiceWindow || voiceWindow.closed || typeof voiceWindow.closed == 'undefined') {
-                showVoiceError('Pop-up blocked! Please allow pop-ups for this site and try again.');
-                updateVoiceStatus('Click "Start Voice Session" again after allowing pop-ups');
+            // Check for microphone support
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                showVoiceError('Speech recognition is not supported in this browser. Please try Chrome, Edge, or Safari.');
                 endVoiceSession();
                 return;
             }
             
-            updateVoiceStatus('Voice session active - talk with Kaha in the new window', 'listening');
-            
-            // Monitor if the voice window is closed
-            const checkClosed = setInterval(() => {
-                if (voiceWindow.closed) {
-                    clearInterval(checkClosed);
-                    if (isCallActive) {
-                        endVoiceSession();
-                    }
-                }
-            }, 1000);
+            // Request microphone permission and start listening
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    // Permission granted, start the voice session
+                    stream.getTracks().forEach(track => track.stop()); // Stop the stream, we just needed permission
+                    
+                    // Update the transcript area
+                    const transcript = document.getElementById('transcript');
+                    transcript.innerHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <div style="font-size: 1.1em; color: #7fb069; margin-bottom: 15px;">
+                                <strong>🎙️ Voice Session Started</strong>
+                            </div>
+                            <p style="color: #666; margin-bottom: 15px;">
+                                Kaha is ready to listen. Start speaking naturally.
+                            </p>
+                            <div style="background: rgba(127, 176, 105, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                                <p style="color: #4a5a3a; font-size: 0.9em;">
+                                    <strong>💡 Tips:</strong><br>
+                                    • Speak clearly and pause between thoughts<br>
+                                    • Press spacebar to interrupt Kaha while speaking<br>
+                                    • Your conversation will appear below
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    updateVoiceStatus('Ready to listen - start speaking', 'listening');
+                    
+                    // Start listening
+                    setTimeout(startListening, 1000);
+                    
+                    // Give initial greeting
+                    setTimeout(() => {
+                        const greeting = "Kia ora. I am Kaha, and I'm here to guide you through this voice session. Take a moment to settle in, and when you're ready, please share what's on your mind or how I can support you today.";
+                        speakText(greeting, true);
+                    }, 2000);
+                })
+                .catch(function(error) {
+                    console.error('Microphone access denied:', error);
+                    showVoiceError('Microphone access is required for voice sessions. Please allow microphone access and try again.');
+                    endVoiceSession();
+                });
         }
 
 
@@ -975,10 +977,10 @@ Kia ora. I am Kaha, an AI guide for Somatic Compassion. My purpose is to help fa
             kahaAvatar.classList.remove('active');
             
             updateVoiceUI();
-            updateVoiceStatus('Session ended. Ready to begin a new voice conversation with Kaha');
+            updateVoiceStatus('Voice session ended. Ready to begin a new conversation with Kaha');
             
             // Reset transcript area
-            document.getElementById('transcript').innerHTML = '<em>Click "Start Voice Session" to open Kaha\'s advanced voice interface...</em>';
+            document.getElementById('transcript').innerHTML = '<em>Click "Start Voice Session" to begin talking with Kaha directly on this website...</em>';
         }
 
         // BUG FIX: `startListening` now creates a dedicated element for the user's turn
@@ -986,20 +988,28 @@ Kia ora. I am Kaha, an AI guide for Somatic Compassion. My purpose is to help fa
             if (isCallActive && !isListening && !isSpeaking && recognition) {
                 try {
                     const transcriptDiv = document.getElementById('transcript');
-                    if (transcriptDiv.innerHTML.includes('<em>')) {
+                    
+                    // Only clear if it contains the initial message
+                    if (transcriptDiv.innerHTML.includes('<em>') || transcriptDiv.innerHTML.includes('Voice Session Started')) {
                         transcriptDiv.innerHTML = '';
                     }
-                    currentUserUtteranceElement = document.createElement('div');
-                    transcriptDiv.appendChild(currentUserUtteranceElement);
+                    
+                    // Create element for user's speech if it doesn't exist
+                    if (!currentUserUtteranceElement) {
+                        currentUserUtteranceElement = document.createElement('div');
+                        currentUserUtteranceElement.style.cssText = "margin-bottom: 15px; padding: 10px; background: rgba(168, 213, 186, 0.1); border-radius: 10px;";
+                        transcriptDiv.appendChild(currentUserUtteranceElement);
+                    }
 
                     isListening = true;
+                    finalTranscript = ''; // Reset transcript
                     recognition.start();
-                    updateVoiceStatus('Listening with compassion...', 'listening');
+                    updateVoiceStatus('Listening - speak now...', 'listening');
                 } catch (error) {
                     console.error('Recognition start error:', error);
                     isListening = false;
                     if (error.name === 'InvalidStateError') {
-                        updateVoiceStatus('Listening with compassion...', 'listening');
+                        updateVoiceStatus('Listening - speak now...', 'listening');
                         isListening = true;
                     } else {
                         showVoiceError('Unable to start listening. Please try ending and restarting the session.');
@@ -1017,25 +1027,33 @@ Kia ora. I am Kaha, an AI guide for Somatic Compassion. My purpose is to help fa
         }
 
         function processVoiceInput(userText) {
-            if (!userText.trim() || !isCallActive || !currentUserUtteranceElement) return;
+            if (!userText.trim() || !isCallActive) return;
 
             stopListening();
             
-            // Finalize user's message in the transcript and prevent reprocessing
-            currentUserUtteranceElement.innerHTML = `<strong>You:</strong> ${userText}`;
-            currentUserUtteranceElement = null;
-            finalTranscript = ''; // CRITICAL: Reset transcript for the next user utterance
+            // Finalize user's message in the transcript
+            if (currentUserUtteranceElement) {
+                currentUserUtteranceElement.innerHTML = `<strong>🗣️ You:</strong> ${userText}`;
+                currentUserUtteranceElement = null; // Clear reference
+            }
+            
+            finalTranscript = ''; // Reset transcript for the next user utterance
 
             updateVoiceStatus('Kaha is reflecting...', 'thinking');
+            
+            // Get response from Kaha
             const response = getKahaResponse(userText);
+            
+            // Add Kaha's response to transcript
             const transcript = document.getElementById('transcript');
             const kahaResponseElement = document.createElement('div');
-            kahaResponseElement.style.cssText = "margin-top:15px; margin-bottom: 10px; color:#7fb069;";
-            kahaResponseElement.innerHTML = `<strong>Kaha:</strong> ${response}`;
+            kahaResponseElement.style.cssText = "margin: 15px 0; padding: 15px; background: rgba(127, 176, 105, 0.1); border-radius: 10px; border-left: 4px solid #7fb069;";
+            kahaResponseElement.innerHTML = `<strong>🧘‍♀️ Kaha:</strong> ${response}`;
             transcript.appendChild(kahaResponseElement);
             transcript.scrollTop = transcript.scrollHeight;
 
-            speakText(response);
+            // Speak the response
+            speakText(response, true);
         }
 
         function speakText(text, shouldListenAfter = true) {
